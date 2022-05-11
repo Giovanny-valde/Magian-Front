@@ -1,0 +1,28 @@
+<p>reservas works!</p>
+
+
+<table class="table table-bordered border-primary table-hover">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>nombre</th>
+        <th>checkin</th>
+        <th>checkout</th>
+        <th>uso</th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let item of reser | async">
+        <td>{{item.id}}</td>
+        <td>{{item.idpersona.nombre}} {{item.idpersona.apellido}}</td>
+        <td>{{item.idreserva.checkin | date: 'medium' }}</td>
+        <td>{{item.idreserva.checkout | date: 'medium'}}</td>
+        <td *ngIf="item.uso == 1">uno</td>
+        <td *ngIf="item.uso == 0">cero</td>
+    </tr>
+</tbody>
+</table>
+<!-- <h2>{{(comen | async | json).length}}</h2> -->
+<span *ngIf="(reser | async | json).length == 2 ">
+    <h3>NO SE ENCONTRARON RESERVAS RELACIONADOS A TU BUSQUEDA</h3>
+</span>

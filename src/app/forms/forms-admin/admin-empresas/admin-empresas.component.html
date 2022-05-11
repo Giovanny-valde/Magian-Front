@@ -1,0 +1,36 @@
+<h1>MIS EMPRESAS</h1>
+
+<table class="table table-bordered border-primary table-hover table-success text-center ">
+  <thead>
+    <tr class="thead-inverse">
+      <th>ciudad</th>
+      <th> descripcion</th>
+      <th>id</th>
+      <th>pais</th>
+      <th>tipo</th>
+      <th>acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of empresas$ | async ">
+      <td>{{item.ciudad | uppercase}}</td>
+      <td>{{item.descripcion | uppercase}}</td>
+      <td>{{item.id }}</td>
+      <td>{{item.pais | uppercase}}</td>
+      <td>{{item.tipo | uppercase}}</td>
+      <!-- <td>{{item.activo}}</td> -->
+      <td>
+        <div *ngIf="(!item.activo);then inactivo; else activo"></div>
+        <ng-template #inactivo>
+          <button (click)="Aceptar(item.id)" class="btn btn-success">ACEPTAR</button>
+          <!-- <button class="btn btn-danger"> ELIMINAR</button> -->
+        </ng-template>
+        <ng-template #activo>
+          <button (click)="openDialog(item.id)" class="btn btn-primary">Ver mas</button>
+          <button (click)="Aceptar(item.id)"  class="btn btn-warning">SUSPENDER</button>
+        </ng-template>
+        <!-- <button (click)="editarEmpresa(empresas.id)">Editar</button> -->
+      </td>
+    </tr>
+  </tbody>
+</table>

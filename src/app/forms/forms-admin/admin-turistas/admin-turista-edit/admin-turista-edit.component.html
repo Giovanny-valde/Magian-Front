@@ -1,0 +1,43 @@
+<mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
+  <mat-tab label="Home"><p *ngIf="ver;else formulario"></p></mat-tab>
+  <mat-tab label="Comentario"> <app-comentario [value]="dat"  ></app-comentario> </mat-tab>
+  <mat-tab label="Reservas"> <app-reservas [value]="dat"  ></app-reservas>  </mat-tab>
+</mat-tab-group>
+
+<button type="button" class="btn btn-info" (click)="salir()">Salir</button>
+
+<ng-template #formulario>
+  <form [formGroup]="formPersona">
+    <div class="row g-2">
+      <input type="hidden" formControlName="id" class="form-control">
+      <div class="col-5">
+        <label for="">Dni</label>
+        <input type="text" formControlName="dni" class="form-control" readonly>
+      </div>
+      <div class="col-5">
+        <label for="">Nombre</label>
+        <input type="text" formControlName="nombre" class="form-control">
+      </div>
+      <div class="col-5">
+        <label for="">Apellido</label>
+        <input type="text" formControlName="apellido" class="form-control">
+      </div>
+      <div class="col-5">
+        <label for="">Correo</label>
+        <input type="text" formControlName="correo" class="form-control">
+      </div>
+      <div class="col-5">
+        <label for="">pais</label>
+        <input type="text" formControlName="pais" class="form-control">
+      </div>
+      <div class="col-5">
+        <label for="">Telefono</label>
+        <input type="text" formControlName="telefono" class="form-control">
+      </div>
+      <div class="col-5">
+        <button type="button" class="btn btn-danger" >Eliminar</button>
+        <button type="button" class="btn btn-primary" (click)="actualizar()">Actualizar</button>
+      </div>
+    </div>
+  </form>
+</ng-template>

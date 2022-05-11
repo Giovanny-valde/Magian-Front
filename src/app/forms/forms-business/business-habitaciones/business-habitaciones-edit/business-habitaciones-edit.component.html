@@ -1,0 +1,38 @@
+<form [formGroup]="formHabitacion" class="text-center">
+  <div class="row g-2">
+    <div class="col-6">
+      <label class="form-control-label" for="inputDescripcion">nombre</label>
+      <input class="form-control" type="text" formControlName="nombre">
+    </div>
+    <div class="col-2">
+      <label class="form-control-label" for="inputPrecio">Habitaciones</label>
+      <input class="form-control" type="text" formControlName="cantidadHabitacion">
+    </div>
+    <div class="col-2">
+      <label class="form-control-label" for="inputCategoria">capacidad</label>
+      <input class="form-control" type="text" formControlName="cantidadPersona">
+    </div>
+    <div class="col-2">
+      <label class="form-control-label" for="inputEstado">precio</label>
+      <input class="form-control" type="text" formControlName="precio">
+    </div>
+    <div class="col-6 m-auto">
+      <label class="form-control-label" for="inputPrecio">Descripción</label>
+      <textarea formControlName="descripcion" rows="3" class="form-control">
+      </textarea>
+      <!-- <input class="form-control" type="text" formControlName="descripcion"> -->
+    </div>
+    <hr>
+    <div class="col-6">
+      <button *ngIf="data.id ==0 " (click)="guardarHabitacion() ">Agregar</button>
+      <button *ngIf="data.id !=0 " (click)="actualizarHabitacion()">Actualizar</button>
+      <button (click)="cerrar()">Salir</button>
+    </div>
+  </div>
+  <br>
+</form>
+<span *ngIf="data.id !=0 ">
+  <app-business-descuento></app-business-descuento>
+
+</span>
+<!-- <input type="text" name="" id="" formControlName="id"> -->

@@ -1,0 +1,50 @@
+<p>business-perfil works!</p>
+<div class="container">
+  <form [formGroup]="formEmpresa">
+    <div class="row g-2">
+      <!-- <div class="col-6"> -->
+        <!-- <label for="">id</label> -->
+        <input type="hidden" formControlName="id" class="form-control" />
+      <!-- </div> -->
+      <div class="col-6">
+        <label for="">ciudad</label>
+        <input type="text" formControlName="ciudad" class="form-control" />
+      </div>
+      <div class="col-6">
+        <label for="">descripcio</label>
+        <input type="text" formControlName="descripcion" class="form-control" />
+      </div>
+      <div class="col-6">
+        <label for="">pais</label>
+        <input type="text" formControlName="pais" class="form-control" />
+      </div>
+      <div class="col-6">
+        <label for="">tipo</label>
+        <input type="text" formControlName="tipo" class="form-control" />
+      </div>
+
+      <div class="col-6">
+        <label for="">imagen</label>
+        <input
+          type="file"
+          formControlName="imagen"
+          class="form-control"
+          (change)="fileEvent($event)"
+        />
+      </div>
+
+      <div class="col-6">
+        <br>
+        <button class="btn btn-primary" (click)="actualizar()">Actualizar</button>
+        <button class="btn btn-primary">otro dame</button>
+      </div>
+
+      <div class="col-6">
+        <img [src]="img" alt="" width="250" height="250" />
+        <!-- <button (click)="subirArchivo($event)">as</button> -->
+      </div>
+      <!-- <hr> -->
+     
+    </div>
+  </form>
+</div>

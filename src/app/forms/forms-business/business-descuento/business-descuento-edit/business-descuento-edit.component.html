@@ -1,0 +1,49 @@
+<form [formGroup]="formDescuento" class="text-center">
+  <div class="row g-2">
+    <!-- <div class="col-5">
+      <label class="form-control-label">inicio</label>
+      <mat-form-field appearance="fill">
+        <mat-label>Comienzo descuento</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="inicio" readonly>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <label class="form-control-label">fin</label>
+      <mat-form-field appearance="fill">
+        <mat-label>Finalizacion descuento</mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName="fin" readonly>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker2></mat-datepicker>
+      </mat-form-field>
+    </div> -->
+    <div class="col-4 d-flex  align-items-end">
+      <mat-form-field  appearance="fill">
+        <mat-label>Precio descuento </mat-label>
+        <input matInput  formControlName="precio">
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <label class="form-control-label">inicio-fin</label>
+      <mat-form-field appearance="fill">
+        <mat-label>Ingrese el rango de fechas</mat-label>
+        <mat-date-range-input  [rangePicker]="pickers">
+          <input matStartDate formControlName="inicio" placeholder="Start date">
+          <input matEndDate formControlName="fin" placeholder="End date">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
+        <mat-date-range-picker touchUi #pickers></mat-date-range-picker>
+      </mat-form-field>
+    </div>
+    <div class="col-6 d-flex align-items-end">
+      <span *ngIf="value != null">
+        <button class="btn btn-primary" (click)="actualizarDescuento()">actualizar</button>
+        <button class="btn btn-danger">eliminar</button>
+      </span>
+      <span *ngIf="value == null">
+        <button type="button" class="btn btn-primary" (click)="guardarDescuento()"> Agregar</button>
+      </span>
+    </div>
+  </div>
+</form>

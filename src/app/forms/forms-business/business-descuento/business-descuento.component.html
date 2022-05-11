@@ -1,0 +1,32 @@
+<span *ngIf="!ver" >
+<div class="col-6">
+    <button (click)="crearDescuento()">Crear Descuento</button>
+</div>
+</span>
+<table class="table table-bordered" *ngIf="!ver">
+    <thead>
+        <tr>
+            <th>Inicio</th>
+            <th>Fin</th>
+            <th>Antes</th>
+            <th>Descuento</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody >
+            <tr  *ngFor="let item of descuentos"  >      
+                <td>{{item.inicio |  date:'fullDate'}}</td>
+                <td>{{item.fin | date:'fullDate' }}</td>
+                <td>{{item.idhabitacion.precio}}</td>
+                <td>{{item.precio}}</td>
+                <td>
+                    <button (click)="editDescuento(item)">editar</button>
+                    <button (click)="deleteDescuento(item.id)">eliminar</button>
+                </td>
+            </tr>
+    </tbody> 
+</table>
+<span *ngIf="ver" >
+    <app-business-descuento-edit [value]="descuento"></app-business-descuento-edit>
+    <button (click)="atras()" class="btn btn-info">Atras</button>
+</span>  

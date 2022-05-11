@@ -1,0 +1,60 @@
+<div class="body">
+  <div class="container">
+    <mat-tab-group  mat-stretch-tabs class="example-stretched-tabs">
+      <mat-tab label="HOME">
+        <form [formGroup]="formEmpresa">
+          <div class="row g-2">
+            <!-- <div class="col-5"> -->
+              <!-- <label for="">id</label> -->
+              <input type="hidden" formControlName="id" class="form-control" >
+            <!-- </div> -->
+            <div class="col-5">
+              <label for="">ciudad</label>
+              <input type="text" formControlName="ciudad" class="form-control">
+            </div>
+            <div class="col-5">
+              <label for="">descripcio</label>
+              <input type="text" formControlName="descripcion" class="form-control">
+            </div>
+            <div class="col-5">
+              <label for="">imagen</label>
+              <input type="text" formControlName="imagen" class="form-control">
+            </div>
+            <div class="col-5">
+              <label for="">pais</label>
+              <input type="text" formControlName="pais" class="form-control">
+            </div>
+            <div class="col-5">
+              <label for="">tipo</label>
+              <input type="text" formControlName="tipo" class="form-control">
+            </div>
+            <div class="col-5">
+              <label for="">activo</label>
+              <select name="" id="" formControlName="activo" class="form-control">
+                <option value="false">FALSE</option>
+                <option value="true">TRUE</option>
+              </select>
+            </div>
+            <!-- <hr> -->
+            <div class="col-5">
+              <button class="btn btn-outline-primary" (click)="actualizar()">Actualizar </button>
+              <button class="btn btn-outline-danger" (click)="eliminar()">Eliminar</button>
+            </div>
+          </div>
+        </form>
+        <br>
+      </mat-tab>
+      <mat-tab label="COMENTARIOS"><br>
+        <app-comentario [value]="dat" > </app-comentario>
+      </mat-tab>
+      <mat-tab label="HABITACIONES"><br>
+        <app-habitaciones [value]="dat" ></app-habitaciones>
+      </mat-tab>
+      <mat-tab label="RESERVAS">
+        <app-reservas [value]="dat" ></app-reservas>
+      </mat-tab>
+      <mat-tab label="GRAFICAS">Content 4</mat-tab>
+    </mat-tab-group>
+    <button class="btn btn-outline-info btn-lg" (click)="closeDialog()">Salir</button>
+  </div>
+</div>

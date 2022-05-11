@@ -1,0 +1,24 @@
+<p>business-habitaciones works!</p>
+<button class="btn btn-primary" (click)="openHabitacion(0)">Agregar</button>
+<div *ngFor="let item of habitacionesByEmpresa">
+  <div class="card">
+    <div class="content">
+      <div class="front">
+        <h1>{{item.nombre}}</h1>
+        <img src="../../../../assets/images/logo.png" alt="" width="90%" height="50%">
+        {{item.idempresa.descripcion}}
+      </div>
+      <div class="back">
+        <p>{{item.descripcion}}</p>
+        {{item.precio}}
+        <img src="../../../../assets/images/logo.png" alt="" width="90%" height="50%">
+        <hr>
+        <button class="btn btn-success" (click)="openHabitacion(item.id)"> editar</button>
+        <button class="btn btn-warning"> eliminar</button>
+      </div>
+    </div>
+  </div>
+  <!-- {{item.nombre}}
+  {{item.idempresa.descripcion}}
+  {{item.precio}} -->
+</div>

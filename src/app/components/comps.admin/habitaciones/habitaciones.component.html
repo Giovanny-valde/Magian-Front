@@ -1,0 +1,23 @@
+<!-- <h1><strong> {{data.nombre | uppercase}}</strong></h1> -->
+<!-- <button (click)="ver()">Click me!</button> -->
+
+<table class="table table-bordered border-danger table-hover">
+  <thead>
+    <tr>
+      <th>nombre</th>
+      <th>descripcion</th>
+      <th>precio</th>
+      <th>id</th>
+      <th>ciudad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of habi | async">
+      <td>{{item.nombre}}</td>
+      <td>{{item.descripcion}}</td>
+      <td>{{item.precio}}</td>
+      <td>{{item.id}}</td>
+      <td>{{item.idempresa.ciudad}}</td>
+    </tr>
+  </tbody>
+</table>
