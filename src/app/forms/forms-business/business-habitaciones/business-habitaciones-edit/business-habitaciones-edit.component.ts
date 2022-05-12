@@ -19,7 +19,7 @@ export class BusinessHabitacionesEditComponent implements OnInit {
 
   public habitacion$ : Observable<any> = new Observable();
   public formHabitacion! : FormGroup;
-
+  public img: any = '../../../../assets/img/logo.png';
 
   constructor(
     private storeState : Store<State>,
@@ -49,6 +49,7 @@ export class BusinessHabitacionesEditComponent implements OnInit {
       cantidadHabitacion: [''],
       precio: [''],
       cantidadPersona: [''],
+      imagen : [''],
     });
   }
 
@@ -58,6 +59,7 @@ export class BusinessHabitacionesEditComponent implements OnInit {
       this.formHabitacion.controls['descripcion'].setValue(data.descripcion);
       this.formHabitacion.controls['cantidadHabitacion'].setValue(data.cantidadHabitacion);
       this.formHabitacion.controls['precio'].setValue(data.precio);
+      this.img = data.imagen;
       this.formHabitacion.controls['cantidadPersona'].setValue(data.cantidadPersona);
     
   }
@@ -65,6 +67,7 @@ export class BusinessHabitacionesEditComponent implements OnInit {
   public guardarHabitacion() {
     let Habitacion = new habitacionClass(this.formHabitacion.value,this.store);
     Habitacion.idempresa  = this.data.empresa ;
+    Habitacion.imagen = this.img;
     Habitacion.guardarHabitacion();
   }
 
@@ -72,7 +75,16 @@ export class BusinessHabitacionesEditComponent implements OnInit {
     let Habitacion = new habitacionClass(this.formHabitacion.value,this.store);
     Habitacion.idempresa  = this.data.empresa ;
     Habitacion.id = this.data.id;
+    Habitacion.imagen = this.img;
     Habitacion.updateHabitacion();
+  }
+
+  public fileEvent(event: any) {
+    var reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (e: any) => {
+      this.img = e.target.result; //imagen en base 64
+    };
   }
 
 

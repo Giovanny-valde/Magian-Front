@@ -1,3 +1,17 @@
+<mat-tab-group mat-align-tabs="start">
+  <mat-tab label="Habitacion">
+    <ng-template [ngTemplateOutlet]="habitacion" ></ng-template>
+  </mat-tab>
+  <mat-tab label="Descuento">
+    <span *ngIf="data.id !=0 ">
+      <app-business-descuento></app-business-descuento>
+    </span>
+  </mat-tab>
+  <mat-tab label="Third">Content 3</mat-tab>
+</mat-tab-group>
+
+
+<ng-template  #habitacion >
 <form [formGroup]="formHabitacion" class="text-center">
   <div class="row g-2">
     <div class="col-6">
@@ -20,7 +34,20 @@
       <label class="form-control-label" for="inputPrecio">Descripción</label>
       <textarea formControlName="descripcion" rows="3" class="form-control">
       </textarea>
-      <!-- <input class="form-control" type="text" formControlName="descripcion"> -->
+    </div>
+    <div class="col-6">
+      <label for="">imagen</label>
+      <input
+        type="file"
+        formControlName="imagen"
+        class="form-control"
+        (change)="fileEvent($event)"
+      />
+    </div>
+
+    <div class="col-6">
+      <img [src]="img" alt="" width="250" height="250" />
+      <!-- <button (click)="subirArchivo($event)">as</button> -->
     </div>
     <hr>
     <div class="col-6">
@@ -29,10 +56,8 @@
       <button (click)="cerrar()">Salir</button>
     </div>
   </div>
-  <br>
+  <br> 
 </form>
-<span *ngIf="data.id !=0 ">
-  <app-business-descuento></app-business-descuento>
+</ng-template>
 
-</span>
 <!-- <input type="text" name="" id="" formControlName="id"> -->

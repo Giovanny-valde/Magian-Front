@@ -11,6 +11,7 @@ export class habitacionClass{
     descripcion : string = '';
     cantidadHabitacion: number = 0;
     cantidadPersona: number = 0;
+    imagen : string = '';
     precio : number = 0;
     stores : any ;
 
@@ -40,7 +41,8 @@ export class habitacionClass{
             descripcion : this.descripcion,
             cantidadHabitacion : this.cantidadHabitacion,
             cantidadPersona : this.cantidadPersona,
-            precio : this.precio
+            precio : this.precio,
+            imagen : this.imagen
         }
         return Habitacion;
     }

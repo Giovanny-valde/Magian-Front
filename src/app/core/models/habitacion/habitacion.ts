@@ -9,6 +9,7 @@ export interface habitacion{
     cantidadHabitacion?: number ;
     cantidadPersona? : number ;
     precio? : number ;
+    imagen? : string ;
 
 
 }

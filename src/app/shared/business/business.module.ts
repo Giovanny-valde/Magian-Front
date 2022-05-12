@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 import { BusinessRoutingModule } from './business-routing.module';
@@ -31,6 +32,7 @@ import { BusinessDescuentoEditComponent } from 'src/app/forms/forms-business/bus
     BusinessDescuentoComponent,
     BusinessHabitacionesEditComponent,
     BusinessDescuentoEditComponent
+    
   ],
   imports: [
     CommonModule,
@@ -43,7 +45,7 @@ import { BusinessDescuentoEditComponent } from 'src/app/forms/forms-business/bus
     ReactiveFormsModule,
     FormsModule,
     BusinessRoutingModule,
-    
+    MatTabsModule 
   ]
 })
 export class BusinessModule { }
