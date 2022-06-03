@@ -9,7 +9,7 @@ export const initialState : reserclienteState = {
   reserva_clientePorId :{
     id:0,
     idpersona:{id:0,nombre:'',apellido:'',dni:'',telefono:'',correo:'',pais:''},
-    idreserva:{id: 0,checkin: new Date(), checkout: new Date()},uso:0
+    idreserva:{id: 0,checkin: new Date(), checkout: new Date(), cantidad: 0},uso:0
   }
 }
 

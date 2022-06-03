@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { idempresa, listarempresa,listarempresaid } from 'src/app/core/state/actions/empresa.action';
 import { State } from 'src/app/core/state/app.state';
 import { selectEmpresaList,  selectEmpresaPorId, selectIdEmpresa } from 'src/app/core/state/selectors/empresa.selector';
+import { BusinessService } from '../business.service';
 
 @Component({
   selector: 'app-menu-business',
@@ -20,7 +21,8 @@ export class MenuBusinessComponent implements OnInit {
   constructor(
     private route:ActivatedRoute,
     private store: Store,
-    private storeState: Store < State > ,
+    private storeState: Store < State >,
+    private service : BusinessService
     ) 
   { }
 
@@ -29,6 +31,10 @@ export class MenuBusinessComponent implements OnInit {
     this.store.dispatch(listarempresa());
     this.empresas$ = this.storeState.select(selectEmpresaList);
     this.empresa$ = this.storeState.select(selectEmpresaPorId);
+    let des = this.empresa$.subscribe(data => {
+      // console.log(data.descripcion);
+      this.service.nombre$.next(data.descripcion);
+    });
     let id = this.storeState.select(selectIdEmpresa);
 
     id.subscribe(data => {
@@ -36,7 +42,7 @@ export class MenuBusinessComponent implements OnInit {
     });
 
     this.route.params.subscribe(params => {
-      this.getEmpresa( params['nombre']);
+      this.getEmpresa( params['nombre'] );
     });
   }
 

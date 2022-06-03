@@ -1,21 +1,41 @@
-<p>business-habitaciones works!</p>
+<!-- <p>business-habitaciones works!</p> -->
 <button class="btn btn-primary" (click)="openHabitacion(0)">Agregar</button>
 <div *ngFor="let item of habitacionesByEmpresa">
   <div class="card">
     <div class="content">
       <div class="front">
-        <h1>{{item.nombre}}</h1>
-        <img  [src]="item.imagen" alt="" width="90%" height="50%">
-        {{item.idempresa.descripcion}}
+        <h1>{{item.nombre  | uppercase  }}</h1>
+        <img  [src]="item.imagen" alt="" width="90%" height="70%">
       </div>
       <div class="back">
-        {{item | json}}
-        <p>{{item.descripcion}}</p>
-        {{item.precio}}
-        <img src="../../../../assets/images/logo.png" alt="" width="90%" height="50%">
+      <div class="container">
+        <h1>{{item.nombre |  titlecase }}</h1>
+        <table class="table table-bordered table-hover mt-2 text-white">
+          <tbody>
+            <!-- {{item|json}} -->
+          <tr>
+            <th scope="row">Precio</th>
+            <th>{{item.precio  | number:'1.0-3' }}</th>
+          </tr>
+          <tr>
+            <th scope="row">Cantidad Persona</th>
+            <th>{{item.cantidadPersona}}</th>
+          </tr>
+          <tr>
+            <th scope="row">Cantidad Habitacion</th>
+            <th>{{item.cantidadHabitacion}}</th>
+          </tr>
+          <tr>
+            <th scope="row">Descripcion</th>
+            <th>{{item.descripcion}}</th>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+        <!-- <img src="../../../../asssets/images/logo.png" alt="" width="90%" height="50%"> -->
         <hr>
         <button class="btn btn-success" (click)="openHabitacion(item.id)"> editar</button>
-        <button class="btn btn-warning"> eliminar</button>
+        <button class="btn btn-warning ms-3"> eliminar</button>
       </div>
     </div>
   </div>

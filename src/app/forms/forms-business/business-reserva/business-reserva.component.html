@@ -1,0 +1,36 @@
+<button class="btn btn-primary">AGREGAR</button>
+<div class="container">
+    <br>
+  <div class="row ">
+    <div class="card border-primary mb-3 text-center  col-3 ms-2" style="max-width: 18rem;"
+      *ngFor="let item of reservas">
+      <div class="card-header">Reserva N° {{item.idreserva.id}}</div>
+      <div class="card-body text-primary">
+        <!-- <h5 class="card-title">{{item.idhabitacion.descripcion}}</h5> -->
+        <!-- <p class="card-text"> -->
+
+        <table class="table table-bordered table-hover mt-2 ">
+          <tbody>
+            <tr>
+              <th scope="row">Check-in</th>
+              <th> {{item.idreserva.checkin | date:'fullDate'}}</th>
+            </tr>
+            <tr>
+              <th scope="row">Check-out</th>
+              <th>{{item.idreserva.checkout | date:'fullDate'}}</th>
+            </tr>
+            <tr>
+              <th scope="row">Personas</th>
+              <th> {{item.idreserva.cantidad}}</th>
+            </tr>
+            <tr>
+              <th scope="row"> Total</th>
+              <th>   {{item.idhabitacion.precio * item.idreserva.cantidad * item.diferencia | number:'1.0-3' }}</th>
+            </tr>
+        </tbody>
+    </table>
+    <button (click)="openReserva(item)">Ver Mas</button>
+      </div>
+    </div>
+  </div>
+</div>

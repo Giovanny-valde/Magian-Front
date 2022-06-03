@@ -7,7 +7,7 @@ import { listarReservaSucces, listarReservaSuccesId } from "../actions/reserva.a
 export const initialState : reservaState = {
   reserva: [],
   reservaPorId :{
-    id: 0,checkin: new Date(), checkout: new Date()
+    id: 0,checkin: new Date(), checkout: new Date() , cantidad : 0
   }
 }
 

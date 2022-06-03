@@ -3,7 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { reservahabitacion } from '../../models/reserva_habitacion/reserhabitacion';
 import { SharedService } from 'src/app/shared.service';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class ReservaHabitacionService {
 
     private path = this.sharedService.APIUrl + '/reservahabitacion';

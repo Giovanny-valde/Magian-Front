@@ -1,0 +1,100 @@
+<mat-tab-group mat-align-tabs="start">
+  <mat-tab label="Datos ingreso">
+    <ng-template [ngTemplateOutlet]="ingreso"></ng-template>
+  </mat-tab>
+  <mat-tab label="Personas" *ngIf="data.id !=0 ">
+    <ng-template [ngTemplateOutlet]="personas"></ng-template>
+  </mat-tab>
+  <mat-tab label="Habitaciones">
+    <ng-template [ngTemplateOutlet]="habitaciones"></ng-template>
+  </mat-tab>
+</mat-tab-group>
+<!-- <button (click)="cerrar()" class="btn btn-danger" >Salir</button> -->
+
+
+<ng-template #ingreso>
+  <form [formGroup]="formReserva" class="text-center">
+    <div class="row g-2">
+      <div class="col-3">
+        <label class="form-control-label" for="inputDescripcion">Check-in</label>
+        <input class="form-control" type="date" formControlName="checkin">
+      </div>
+      <div class="col-3">
+        <label class="form-control-label" for="inputPrecio">Check-out</label>
+        <input class="form-control" type="date" formControlName="checkout">
+      </div>
+      <div class="col-2">
+        <label class="form-control-label" for="inputCategoria">Personas</label>
+        <input class="form-control" type="number" formControlName="cantidad">
+      </div>
+
+      <div class="col-2">
+        <label class="form-control-label" for="inputCategoria">Dias</label>
+        <input class="form-control" type="number" [value]="data.data.diferencia" disabled>
+      </div>
+    </div>
+  </form>
+  <br>
+  <br>
+  <br>
+</ng-template>
+<!-- <hr> -->
+
+<ng-template #personas>
+<div class="row">
+  <div *ngFor="let item of reserCliente" class="col-4">
+    <table class="table table-bordered table-hover mt-2">
+      <tbody>
+        <tr>
+          <th scope="row">Nombre</th>
+          <th> {{item.idpersona.nombre}} {{item.idpersona.apellido}}</th>
+        </tr>
+        <tr>
+          <th scope="row">Correo</th>
+          <th>{{item.idpersona.correo}}</th>
+        </tr>
+        <tr>
+          <th scope="row">Telefono</th>
+          <th>{{item.idpersona.telefono}}</th>
+        </tr>
+        <tr>
+          <th scope="row">Dni</th>
+          <th> {{item.idpersona.dni}}</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<button class="btn btn-primary">Agregar Persona</button>
+<!-- <hr> -->
+</ng-template>
+
+
+<ng-template #habitaciones>
+<div class="row">
+  <div *ngFor="let item of reserHabi" class="col-4">
+    <table class="table table-bordered table-hover mt-2">
+      <tbody>
+        <tr>
+          <th scope="row">Descripcion</th>
+          <th> {{item.idhabitacion.descripcion}}</th>
+        </tr>
+        <tr>
+          <th scope="row">Precio</th>
+          <th>{{item.idhabitacion.precio}}</th>
+        </tr>
+        <tr>
+          <th scope="row">Nombre</th>
+          <th>{{item.idhabitacion.nombre}}</th>
+        </tr>
+        <tr>
+          <th scope="row">Imagen</th>
+          <th><img [src]="item.idhabitacion.imagen" alt="" width="100%" height="50px"></th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<button class="btn btn-primary">Agregar Habitacion</button>
+<!-- <hr> -->
+</ng-template>

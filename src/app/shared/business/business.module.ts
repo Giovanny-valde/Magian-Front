@@ -18,6 +18,10 @@ import { BusinessHabitacionesComponent } from 'src/app/forms/forms-business/busi
 import { BusinessHabitacionesEditComponent } from 'src/app/forms/forms-business/business-habitaciones/business-habitaciones-edit/business-habitaciones-edit.component';
 import { BusinessDescuentoComponent } from 'src/app/forms/forms-business/business-descuento/business-descuento.component';
 import { BusinessDescuentoEditComponent } from 'src/app/forms/forms-business/business-descuento/business-descuento-edit/business-descuento-edit.component';
+import { BusinessHomeComponent } from 'src/app/forms/forms-business/business-home/business-home.component';
+import { BusinessImagenesComponent } from 'src/app/forms/forms-business/business-imagenes/business-imagenes.component';
+import { BusinessReservaComponent } from 'src/app/forms/forms-business/business-reserva/business-reserva.component';
+import { BusinessReservaEditComponent } from 'src/app/forms/forms-business/business-reserva/business-reserva-edit/business-reserva-edit.component';
 
 
 
@@ -31,8 +35,11 @@ import { BusinessDescuentoEditComponent } from 'src/app/forms/forms-business/bus
     BusinessHabitacionesEditComponent,
     BusinessDescuentoComponent,
     BusinessHabitacionesEditComponent,
-    BusinessDescuentoEditComponent
-    
+    BusinessDescuentoEditComponent,
+    BusinessHomeComponent,
+    BusinessImagenesComponent, 
+    BusinessReservaComponent,
+    BusinessReservaEditComponent,
   ],
   imports: [
     CommonModule,

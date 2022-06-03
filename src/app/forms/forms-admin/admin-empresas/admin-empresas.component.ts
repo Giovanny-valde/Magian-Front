@@ -66,8 +66,8 @@ export class AdminEmpresasComponent implements OnInit {
   public openDialog(id: number) {
     this.store.dispatch(listarempresaid({id: id}));
     const dialogref = this.dialog.open(AdminEmpresaEditComponent, {
-      width: '700px',
-      height: '430px',
+      width: '1000px',
+      height: '500px',
       data: {
         id: id
       }

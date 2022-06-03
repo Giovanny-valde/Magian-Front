@@ -2,14 +2,14 @@
   <mat-tab label="Habitacion">
     <ng-template [ngTemplateOutlet]="habitacion" ></ng-template>
   </mat-tab>
-  <mat-tab label="Descuento">
-    <span *ngIf="data.id !=0 ">
-      <app-business-descuento></app-business-descuento>
-    </span>
+  <mat-tab label="Descuento"  *ngIf="data.id !=0 ">
+    <app-business-descuento></app-business-descuento>
   </mat-tab>
-  <mat-tab label="Third">Content 3</mat-tab>
+  <mat-tab label="Imagenes">
+    <app-business-imagenes></app-business-imagenes>
+  </mat-tab>
 </mat-tab-group>
-
+<button (click)="cerrar()" class="btn btn-danger" >Salir</button>
 
 <ng-template  #habitacion >
 <form [formGroup]="formHabitacion" class="text-center">
@@ -44,7 +44,6 @@
         (change)="fileEvent($event)"
       />
     </div>
-
     <div class="col-6">
       <img [src]="img" alt="" width="250" height="250" />
       <!-- <button (click)="subirArchivo($event)">as</button> -->
@@ -53,7 +52,6 @@
     <div class="col-6">
       <button *ngIf="data.id ==0 " (click)="guardarHabitacion() ">Agregar</button>
       <button *ngIf="data.id !=0 " (click)="actualizarHabitacion()">Actualizar</button>
-      <button (click)="cerrar()">Salir</button>
     </div>
   </div>
   <br> 

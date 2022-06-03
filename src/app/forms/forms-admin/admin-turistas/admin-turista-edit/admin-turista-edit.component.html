@@ -1,10 +1,13 @@
-<mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
-  <mat-tab label="Home"><p *ngIf="ver;else formulario"></p></mat-tab>
-  <mat-tab label="Comentario"> <app-comentario [value]="dat"  ></app-comentario> </mat-tab>
-  <mat-tab label="Reservas"> <app-reservas [value]="dat"  ></app-reservas>  </mat-tab>
-</mat-tab-group>
-
-<button type="button" class="btn btn-info" (click)="salir()">Salir</button>
+<body>
+  
+  <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
+    <mat-tab label="Home"><p *ngIf="ver;else formulario"></p></mat-tab>
+    <mat-tab label="Comentario"> <app-comentario [value]="dat"  ></app-comentario> </mat-tab>
+    <mat-tab label="Reservas"> <app-reservas [value]="dat"  ></app-reservas>  </mat-tab>
+  </mat-tab-group>
+  
+  <button type="button" class="btn btn-info" (click)="salir()">Salir</button>
+</body>
 
 <ng-template #formulario>
   <form [formGroup]="formPersona">

@@ -58,11 +58,13 @@ export class BusinessPerfilComponent implements OnInit {
   }
 
   public fileEvent(event: any) {
+
     var reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]);
     reader.onload = (e: any) => {
       this.img = e.target.result; //imagen en base 64
     };
+    
   }
 
   public actualizar() {

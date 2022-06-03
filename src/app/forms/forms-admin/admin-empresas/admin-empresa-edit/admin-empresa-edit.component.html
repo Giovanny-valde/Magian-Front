@@ -1,5 +1,6 @@
-<div class="body">
-  <div class="container">
+<body>
+
+<div>
     <mat-tab-group  mat-stretch-tabs class="example-stretched-tabs">
       <mat-tab label="HOME">
         <form [formGroup]="formEmpresa">
@@ -37,8 +38,8 @@
             </div>
             <!-- <hr> -->
             <div class="col-5">
-              <button class="btn btn-outline-primary" (click)="actualizar()">Actualizar </button>
-              <button class="btn btn-outline-danger" (click)="eliminar()">Eliminar</button>
+              <button class="actualizar" (click)="actualizar()">Actualizar </button>
+              <button class="eliminar" (click)="eliminar()">Eliminar</button>
             </div>
           </div>
         </form>
@@ -57,4 +58,4 @@
     </mat-tab-group>
     <button class="btn btn-outline-info btn-lg" (click)="closeDialog()">Salir</button>
   </div>
-</div>
+</body>

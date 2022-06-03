@@ -1,0 +1,46 @@
+<div class="p-3 shadow-sm"
+  style="border:1px solid #e0e0e0;border-radius:7px;width:95%;margin:auto;background-color:#f5f5f5">
+  <table class="mx-auto">
+    <tr>
+      <th>
+        <span class="fw-bold" style="font-size: 1.5rem;">Inicio - Empresa - {{titulo}}</span>
+      </th>
+    </tr>
+  </table>
+</div>
+<div style="width:95%;margin:auto;height:100vh;position:relative">
+  <div style="margin:auto;position:absolute;top:5%;">
+    <div class="container">
+      <div class="row align-items-middle text-center  ">
+        <div class="col-lg-4 my-3 " *ngFor="let pagina of urls">
+          <div class="tcard-flip mx-auto text-center">
+            <div class="tcard-flip-container shadow-sm">
+              <div class="tcard-flip-front p-3">
+                <div class="p-3 my-4"
+                  style="width:80%;margin:auto;background-color:#fff;border-radius:10px;border:1px solid #e0e0e0;">
+                  <i class="{{pagina.icono}} fa-9x"></i>
+                  <div class="mt-4">
+                    <span class="text-center fw-bold" style="font-size:1.2rem">{{pagina.nombre}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="tcard-flip-back">
+                <div class="mt-4">
+                  <span class="text-center fw-bold" style="font-size:1.2rem">{{pagina.nombre}}</span>
+                </div>
+                <div style="height:100%;position:relative">
+                  <div
+                    style="color:#000;position:relative;top:10%;background-color:#fff;width:80%;margin:auto;border-radius:10px;border:1px solid #e0e0e0;">
+                    <div class="pt-4 px-4 mb-3">
+                      <p>{{pagina.descripcion}}</p>
+                    </div>
+                    <a class="my-4 btn btn-sm btn-ver" [routerLink]="pagina.url">Ver {{pagina.nombre}}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,39 +1,28 @@
-.body {
-    /* background-color: #158b72; */
-    /* background-image: url("imagenes/logo.jpeg"); */
-   /* background: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.facebook.com%2Fpages%2Fcategory%2FEntrepreneur%2FArepas-la-Calentana-106479674361654%2F&psig=AOvVaw30ul2FSmrLfxguZ9wdYwIr&ust=1643920013663000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCMjv6bbt4fUCFQAAAAAdAAAAABAD) no-repeat; */
-  /* Keep the inherited background full size. */
-  /* background-attachment: inherit;  */
-  background-size: cover;
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  /* height: 70vh; */
+body {
+  background: rgb(195, 235, 226);
+  background: radial-gradient(circle, #c3ebe2 29%, rgba(243, 251, 249, 1) 74%);
+ 
 }
 
-.container {
-  width: 40rem;
-  /* background: url(https://images.unsplash.com/photo-1544306094-e2dcf9479da3) no-repeat; */
-  /* height: 20rem; */
-  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
-  border-radius: 5px;
-  position: relative;
-  z-index: 1;
-  background: inherit;
-  overflow: hidden;
+
+.eliminar{
+  border-radius: 20px;
+	background: rgb(238,174,174);
+  border-color: #ffffff;
+    font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
 }
 
-.container:before {
-  content: "";
-  position: absolute;
-  background: inherit;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-    /* box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5); */
-  box-shadow: inset 0 0 2000px rgba(195, 235, 226, .5);
-  filter: blur(5px);
-  margin: -20px;
+.actualizar{
+  border-radius: 20px;
+  background: rgb(174,175,238); 
+	border-color: #ffffff;
+    font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
 }

@@ -1,0 +1,16 @@
+<!-- {{imagenes | json}} -->
+<div style="margin-left: 20%;">
+  <br>
+  <button class="btn btn-success" style="margin-left: 20%">Agregar</button>
+  <br><br>
+  <input class="form-control" type="file" id="formFile" style="width: 70%;">
+</div>
+<br><br><br>
+<div class="row">
+    <div class="card col-3 ms-2" style="width: 13rem;" *ngFor="let item of imagenes" >
+    <img [src]="item.idimagen.imagen" class="card-img-top" width="100%" height="100px">
+    <div class="card-body">
+      <p class="card-text"><button class="btn btn-primary">Editar</button></p>
+    </div>
+  </div>
+</div>

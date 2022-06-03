@@ -30,21 +30,18 @@ export class BusinessDescuentoComponent implements OnInit {
   ngOnInit(): void {
     this.descuentos$ = this.storeState.select(selectDescuentoList)
     this.habitacionid$ = this.storeState.select(selectHabitacionPorId);
-
     this.habitacionid$.subscribe(habitacion => {
-
       this.habitacionid = habitacion.id;
     })
-
     this.descuentos$.subscribe(descuentos => {
-      console.log(descuentos)
+      // console.log(descuentos)
       this.descuentoByhabitacion(descuentos);
-        })
+    })
   }
 
   public descuentoByhabitacion(descuentos : any){
     this.descuentos.length = 0;
-     console.log(descuentos)
+    //  console.log(descuentos)
      for(let i = 0; i < descuentos.length; i++){
        if(descuentos[i].idhabitacion.id == this.habitacionid){
          this.descuentos.push(descuentos[i])

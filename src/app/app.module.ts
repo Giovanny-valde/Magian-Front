@@ -21,11 +21,11 @@ import { ReservaEffects } from './core/state/efects/reserva.effect ';
 import { Reserva_clienteEffects } from './core/state/efects/reserva_cliente.effect ';
 import { DescuentoEffects } from './core/state/efects/descuento.effect ';
 import { DatePipe } from '@angular/common';
-
+import { BusinessReservaComponent } from './forms/forms-business/business-reserva/business-reserva.component';
+import { BusinessReservaEditComponent } from './forms/forms-business/business-reserva/business-reserva-edit/business-reserva-edit.component';
 @NgModule({
   declarations: [
-    AppComponent, 
-    // AdminTuristaEditComponent,
+    AppComponent,
   ],
   imports: [
     BrowserModule,

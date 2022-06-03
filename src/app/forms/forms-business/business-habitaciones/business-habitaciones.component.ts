@@ -43,14 +43,9 @@ export class BusinessHabitacionesComponent implements OnInit {
   }
 
   public habitacionByEmpresa(data: any){
-    this.habitacionesByEmpresa = this.habitaciones.filter((habitacion:any) => habitacion.idempresa.id == data.id)
-    // for (let index = 0; index < this.habitaciones.length; index++) {
-    //   if (data.id == this.habitaciones[index].idempresa.id) {
-    //     this.habitacionesByEmpresa.push(this.habitaciones[index]);
-    //   }
-    // }
+    this.habitacionesByEmpresa = this.habitaciones.filter((habitacion:any) => habitacion.idempresa.id == data.id);
   }
-
+  
   public openHabitacion(id:number){
      let height : string = '350px';
     if (id != 0) {
@@ -60,7 +55,7 @@ export class BusinessHabitacionesComponent implements OnInit {
     }
     const dialogref = this.dialog.open(BusinessHabitacionesEditComponent,{
       width: '700px',
-      height: height,
+      height: "600px",
       data: {
         id: id,
         empresa :  this.idempresa
