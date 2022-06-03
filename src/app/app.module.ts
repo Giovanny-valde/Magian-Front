@@ -20,11 +20,14 @@ import { PersonaEffects } from './core/state/efects/persona.effect';
 import { ReservaEffects } from './core/state/efects/reserva.effect ';
 import { Reserva_clienteEffects } from './core/state/efects/reserva_cliente.effect ';
 import { DescuentoEffects } from './core/state/efects/descuento.effect ';
+import { ProveedorEffects } from './core/state/efects/proveedor/proveedor.effect';
+import { ProductoEffects } from './core/state/efects/producto/producto.effect';
+import { InventarioEffects } from './core/state/efects/inventario/inventario.effect';
 import { DatePipe } from '@angular/common';
-
+import { PersonaInventarioEffects } from './core/state/efects/persona_inventario/persona_inventario.effect';
 @NgModule({
   declarations: [
-    AppComponent, 
+    AppComponent,
     // AdminTuristaEditComponent,
   ],
   imports: [
@@ -32,7 +35,7 @@ import { DatePipe } from '@angular/common';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    
+
     StoreModule.forRoot(ROOT_REDUCERS),
     StoreDevtoolsModule.instrument({}),
     EffectsModule.forRoot([
@@ -42,7 +45,11 @@ import { DatePipe } from '@angular/common';
       PersonaEffects,
       ReservaEffects,
       Reserva_clienteEffects,
-      DescuentoEffects
+      DescuentoEffects,
+	    ProveedorEffects,
+	    ProductoEffects,
+	    InventarioEffects,
+      PersonaInventarioEffects
     ]),
 
   ],

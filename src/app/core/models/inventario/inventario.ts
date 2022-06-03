@@ -1,14 +1,10 @@
-import { empresa } from "../empresa/empresa";
-import { producto } from "../producto/producto";
+import { Producto } from "../producto/producto";
 
-export class inventario{
-
-    id : number = 0;
-    idproducto! : producto ;
-    cantidad : number = 0;
-    precio : number = 0;
-    idempresa! : empresa ;
-    fecha! : Date ;
-    tipo : string = '';
-
+export class Inventario {
+    id: number = 0;
+    idProducto!: Producto;
+    precio: number = 0;
+    cantidad: number = 0;
+    fecha: string = '';
+    tipo: string = '';
 }

@@ -18,6 +18,7 @@ import { BusinessHabitacionesComponent } from 'src/app/forms/forms-business/busi
 import { BusinessHabitacionesEditComponent } from 'src/app/forms/forms-business/business-habitaciones/business-habitaciones-edit/business-habitaciones-edit.component';
 import { BusinessDescuentoComponent } from 'src/app/forms/forms-business/business-descuento/business-descuento.component';
 import { BusinessDescuentoEditComponent } from 'src/app/forms/forms-business/business-descuento/business-descuento-edit/business-descuento-edit.component';
+import { DataTablesModule } from 'angular-datatables';
 
 
 
@@ -32,7 +33,7 @@ import { BusinessDescuentoEditComponent } from 'src/app/forms/forms-business/bus
     BusinessDescuentoComponent,
     BusinessHabitacionesEditComponent,
     BusinessDescuentoEditComponent
-    
+
   ],
   imports: [
     CommonModule,
@@ -45,7 +46,11 @@ import { BusinessDescuentoEditComponent } from 'src/app/forms/forms-business/bus
     ReactiveFormsModule,
     FormsModule,
     BusinessRoutingModule,
-    MatTabsModule 
-  ]
+    MatTabsModule,
+    DataTablesModule
+  ],
+  exports:[
+    DataTablesModule
+  ],
 })
 export class BusinessModule { }

@@ -3,11 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { personaInventario } from '../../models/persona_inventario/persoinventario';
 import { SharedService } from 'src/app/shared.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+}
+)
 export class PersonaInventarioService {
 
     private path = this.sharedService.APIUrl + '/personainventario';
-    
+
     constructor(private http: HttpClient, private sharedService: SharedService) { }
 
     public listarTodos() {

@@ -1,0 +1,12 @@
+<div class="inventario-navbar mt-3">
+  <div class="inventario-navbar-content ">
+      <ul class="nav">
+        <li class="nav-item mx-auto text-center" *ngFor="let link of inventarioLinks">
+          <a class="nav-link py-3 mx-1 inventario-navbar-link" [routerLink]="link.link"  [routerLinkActiveOptions]="{exact: true}"  routerLinkActive="inventario-navbar-link-selected">
+            <i class="{{link.icon}}  text-black"></i>
+            {{link.label}}
+          </a>
+        </li>
+      </ul>
+  </div>
+</div>

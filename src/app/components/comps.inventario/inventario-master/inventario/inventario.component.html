@@ -1,0 +1,232 @@
+<div class="tcard">
+  <div class="tcard-title">
+    <div class="row align-items-center">
+      <div class="col-md-7 text-center">
+        <i class="sidebar-icon mx-3 fas fa-shapes"></i>
+        <span> Lista de Inventario</span>
+      </div>
+      <div class="col-md-5 text-end">
+        <button type="button" class="btn btn-sm btn-crear" data-bs-toggle="modal" data-bs-target="#modalInventario"
+          (click)="abrirModal(0,'crearInventario')">
+          <i class="fas fa-plus"></i>
+          Añadir Inventario
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="tcard-content">
+    <table id="seTable" datatable [dtOptions]="dtOptions" class="table table-striped text-center" style="background-color: #f5f5f5;border: 1px solid #e0e0e0;">
+      <thead>
+        <tr>
+        <th>ID</th>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th>Fecha</th>
+        <th>Tipo</th>
+        <th>Valor Total</th>
+        <th>Opciones</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let inventario of inventarios$ | async">
+          <td>{{inventario.id}}</td>
+          <td class="tlink" (click)="verProducto(inventario.idProducto)" data-bs-toggle="modal"
+            data-bs-target="#modalInventario">{{inventario.idProducto.nombre}}</td>
+          <td>{{inventario.cantidad}}</td>
+          <td>{{inventario.precio}}</td>
+          <td>{{formatearFecha(inventario.fecha)}}</td>
+          <td>{{inventario.tipo}}</td>
+          <td>
+            <span class="text-danger" *ngIf="inventario.tipo=='entrada'">
+              -{{inventario.cantidad * inventario.precio}}
+            </span>
+            <span class="text-success" *ngIf="inventario.tipo=='salida'">
+              +{{inventario.cantidad * inventario.precio}}
+            </span>
+          </td>
+          <td>
+            <a class="btn btn-sm btn-ver" title="Ver proveedor" data-bs-toggle="modal" data-bs-target="#modalInventario"
+              (click)="verProducto(inventario.idProducto)">
+              <i class="fas fa-eye"></i>
+            </a>
+            <a class="btn btn-sm btn-editar mx-2" title="Editar proveedor" data-bs-toggle="modal"
+              data-bs-target="#modalInventario" (click)="abrirModal(inventario,'editarInventario')">
+              <i class="fas fa-edit"></i>
+            </a>
+            <a class="btn btn-sm btn-eliminar" title="Eliminar producto" data-bs-toggle="modal"
+              data-bs-target="#modalInventario" (click)="abrirModal(inventario,'eliminarInventario')">
+              <i class="fas fa-trash"></i>
+            </a>
+          </td>
+
+        </tr>
+        <tr>
+          <td class="align-middle">Cantidad ganada</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="text-success align-middle">+{{calcularTotal()[0]}}</td>
+          <td></td>
+        </tr>
+        <tr >
+          <th class="align-middle">Cantidad perdida</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="text-danger align-middle">{{calcularTotal()[1]}}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="modal fade " id="modalInventario" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header tcard-title">
+        <div class="col-md-3">
+          <button type="button" class="btn btn-sm btn-cancel" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+        <div class="col-md text-center">
+          <h4 class="modal-title" *ngIf="tipo=='verProducto'">Ver producto - {{productoActual.nombre}}</h4>
+          <h4 class="modal-title" *ngIf="tipo=='crearInventario'">Crear Inventario</h4>
+          <h4 class="modal-title" *ngIf="tipo=='editarInventario'">Editar Inventario</h4>
+          <h4 class="modal-title" *ngIf="tipo=='eliminarInventario'">Eliminar Inventario</h4>
+        </div>
+        <div class="col-md-3 text-end">
+          <button *ngIf="tipo=='verProducto'" class="btn btn-ver btn-sm" data-bs-dismiss="modal">Ok</button>
+          <button *ngIf="tipo=='crearInventario'" class="btn btn-crear btn-sm"
+            (click)="crearInventario()">Crear</button>
+          <button *ngIf="tipo=='editarInventario'" class="btn btn-editar btn-sm"
+            (click)="editarInventario()">Editar</button>
+          <button *ngIf="tipo=='eliminarInventario'" class="btn btn-eliminar btn-sm"
+            (click)="eliminarInventario()">Eliminar</button>
+        </div>
+      </div>
+      <div class="modal-body text-center">
+        <div *ngIf="tipo=='verProducto'">
+          <table class="table table-hover table-striped table-bordered">
+            <thead>
+              <tr>
+                <th colspan="2">Datos Producto</th>
+                <th colspan="2">Datos Proveedor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Nombre</th>
+                <td>{{productoActual.nombre}}</td>
+                <td>{{productoActual.idProveedor.correo}}</td>
+                <th>Correo</th>
+              </tr>
+              <tr>
+                <th>Marca</th>
+                <td>{{productoActual.marca}}</td>
+                <td>{{productoActual.idProveedor.direccion}}</td>
+                <th>Dirección</th>
+              </tr>
+              <tr>
+                <th>Id Proveedor</th>
+                <td>{{productoActual.idProveedor.id}}</td>
+                <td>{{productoActual.idProveedor.telefono}}</td>
+                <th>Teléfono</th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div *ngIf="tipo=='crearInventario' || tipo=='editarInventario'">
+          <form [formGroup]="inventarioForm" class="w-75 m-auto">
+            <table class="table text-center">
+              <tr *ngIf="tipo=='editarInventario'">
+                <th>ID:</th>
+                <td>
+                  <input type="text" class="form-control" placeholder="ID" formControlName="id">
+                </td>
+              </tr>
+              <tr>
+                <th>Cantidad</th>
+                <td>
+                  <input type="number" class="form-control" placeholder="Cantidad" formControlName="cantidad">
+                </td>
+              </tr>
+              <tr>
+                <th>Precio</th>
+                <td>
+                  <input type="number" class="form-control" placeholder="Precio" formControlName="precio">
+                </td>
+              </tr>
+              <tr>
+                <th>Fecha</th>
+                <td>
+                  <input type="date" [ngModel]="inventarioActual.fecha | date:'yyyy-MM-dd'" class="form-control"
+                    placeholder="Fecha" formControlName="fecha">
+                </td>
+              </tr>
+              <tr>
+                <th>Producto</th>
+                <td>
+                  <select class="form-select" formControlName="idProducto">
+                    <option value="0" [selected]="0">Seleccione una opción</option>
+                    <option *ngFor="let producto of productos$ | async" [value]="producto.id">{{producto.nombre}}
+                    </option>
+                  </select>
+
+                </td>
+              </tr>
+              <tr>
+                <th>Tipo</th>
+                <td>
+                  <select class="form-select" formControlName="tipoInventario">
+                    <option *ngFor="let tipoI of tipos" [value]="tipoI">{{tipoI}}</option>
+                  </select>
+                </td>
+              </tr>
+
+            </table>
+          </form>
+        </div>
+        <div *ngIf="tipo=='eliminarInventario'">
+          <span class="text-center">¿Seguro de eliminar este registro de inventario?</span>
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <td>{{inventarioActual.id}}</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Producto</th>
+                <td>{{inventarioActual.idProducto.nombre}}</td>
+              </tr>
+              <tr>
+                <th>Cantidad</th>
+                <td>{{inventarioActual.cantidad}}</td>
+              </tr>
+              <tr>
+                <th>Precio</th>
+                <td>{{inventarioActual.precio}}</td>
+              </tr>
+              <tr>
+                <th>Fecha</th>
+                <td>{{formatearFecha(inventarioActual.fecha)}}</td>
+              </tr>
+              <tr>
+                <th>Tipo</th>
+                <td>{{inventarioActual.tipo}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <span class="mx-auto {{mensaje.class}}">{{mensaje.texto}}</span>
+      </div>
+    </div>
+  </div>
+</div>

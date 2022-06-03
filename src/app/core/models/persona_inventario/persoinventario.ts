@@ -1,8 +1,8 @@
-import { inventario } from "../inventario/inventario";
+import { Inventario } from "../inventario/inventario";
 import { persona } from "../persona/persona";
 
 export class personaInventario{
     id : number = 0;
-    idinventario! : inventario;
+    idinventario! : Inventario;
     idpersona! : persona;
 }

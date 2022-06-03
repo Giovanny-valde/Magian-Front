@@ -13,9 +13,16 @@ import { HabitacionReducer } from "./reducers/habitacion.reducer";
 import { PersonaReducer } from "./reducers/persona.reducer";
 import { ReservaReducer } from "./reducers/reserva.reducer";
 import { Reserva_clienteReducer } from "./reducers/reserva_cliente.reducer";
-
+import { ProductoState } from "../models/producto/producto.state";
+import { ProductoReducer } from "./reducers/producto/producto.reducer";
+import { ProveedorState } from "../models/proveedor/proveedor.state";
+import { ProveedorReducer } from "./reducers/proveedor/proveedor.reducer";
+import { InventarioState } from "../models/inventario/inventario.state";
+import { InventarioReducer } from "./reducers/inventario/inventario.reducer";
+import { PersonaInventarioState } from "../models/persona_inventario/persoInventario.state";
+import { PersonaInventarioReducer } from "./reducers/persona_inventario/persona_inventario.reducer";
 export interface State {
-    
+
     empresa: empresaState; // reducer
     habitacion : habitacionState; // reducer
     comentario : comentarioState; // reducer
@@ -23,7 +30,11 @@ export interface State {
     reserva : reservaState; // reducer
     reserva_cliente : reserclienteState; // reducer
     descuento : descuentoState;
-    
+	Proveedor: ProveedorState;
+    Producto: ProductoState;
+    Inventario: InventarioState;
+    PersonaInventario: PersonaInventarioState;
+
 }
 
 export const ROOT_REDUCERS : ActionReducerMap<State> = {
@@ -33,5 +44,9 @@ export const ROOT_REDUCERS : ActionReducerMap<State> = {
     persona : PersonaReducer,
     reserva : ReservaReducer,
     reserva_cliente : Reserva_clienteReducer,
-    descuento : DescuentoReducer
+    descuento : DescuentoReducer,
+	Proveedor: ProveedorReducer,
+    Producto: ProductoReducer,
+    Inventario: InventarioReducer,
+    PersonaInventario: PersonaInventarioReducer
 }

@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'Home',
+  },
+  {
+    path: 'inventario',
+    loadChildren: () => import('src/app/components/comps.inventario/inventario-master/inventario-master.module').then(m => m.InventarioMasterModule)
   }
 
 ];

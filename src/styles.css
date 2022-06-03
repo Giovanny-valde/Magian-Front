@@ -2,3 +2,112 @@
 @import '@angular/material/prebuilt-themes/indigo-pink.css';;
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* You can add global styles to this file, and also import other style files */
+body{
+  background-color: #fbfbfb;
+}
+.datatable-buttons-bg{
+  background-color: #f5f5f5;
+  border:2px solid #e0e0e0
+}
+.btn-crear{
+  background-color: #C3EBE2;
+}
+.btn-crear:hover{
+  background-color: #A3E3E2;
+}
+.btn-cancel{
+  background-color: #e9e9e9;
+}
+.btn-cancel:hover{
+  background-color: #c7c5c5;
+}
+.btn-editar{
+  background-color: #fbc531;
+}
+.btn-editar:hover{
+  background-color: #e4aa2f;
+}
+.btn-eliminar{
+  background-color: #e84118;
+  color: #fff;
+}
+.btn-eliminar:hover{
+  background-color: #b81408;
+  color:#fff;
+}
+.btn-ver{
+  background-color: #00bcd4;
+  color: #fff;
+}
+.btn-ver:hover{
+  background-color: #0097a7;
+  color:#fff;
+}
+.tlink{
+  color: #02a2b8;
+  cursor: pointer;
+}
+.tlink:hover{
+  color: #038897;
+}
+.tcard{
+  width:98%;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+.tcard-title{
+  font-weight: bold;
+  padding: 10px;
+  background-color: #f5f5f5;
+}
+.tcard-content{
+  padding: 10px;
+}
+@media screen and (max-width: 1200px){
+  .tcard{
+      width:100%;
+  }
+}
+
+.tcard-flip {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+
+}
+.tcard-flip-container{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  border:3px solid #e0e0e0;
+  border-radius:7px;
+}
+.tcard-flip:hover .tcard-flip-container {
+  transform: rotateY(180deg);
+}
+.tcard-flip-front, .tcard-flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.tcard-flip-front{
+  background-color: #f5f5f5;
+  color: black;
+}
+.tcard-flip-back{
+  background-color: #f5f5f5;
+  color: #000;
+  transform: rotateY(180deg);
+}
+.datatable-buttons-bg{
+  background-color: #f5f5f5;
+  border:2px solid #e0e0e0
+}

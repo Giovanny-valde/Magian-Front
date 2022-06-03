@@ -1,8 +1,8 @@
-import { proveedor } from "../proveedor/proveedor";
+import { Proveedor } from '../proveedor/proveedor';
 
-export class producto{
+export class Producto{
     id : number = 0;
-    idproveedor! : proveedor
+    idProveedor! : Proveedor;
     nombre : string = '';
     marca : string = '';
 }

@@ -1,0 +1,115 @@
+<div class="tcard">
+  <div class="tcard-title">
+    <div class="row align-items-center">
+      <div class="col-md-7 text-center">
+        <i class="me-2 fa-solid fa-truck-loading text-dark"></i>
+        <span>Lista de proveedores</span>
+      </div>
+      <div class="col-md-5 text-end">
+        <button type="button" class="btn btn-sm btn-crear" data-bs-toggle="modal"
+          data-bs-target="#ProveedorFormularioModal" (click)="abrirModal(0)">
+          <i class="fas fa-plus"></i>
+          Añadir proveedor
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="tcard-content">
+    <table id="seTable" class="table table-striped text-center" style="background-color: #f5f5f5;border: 1px solid #e0e0e0;" datatable [dtOptions]="dtOptions">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Correo</th>
+          <th>Dirección</th>
+          <th>Telefono</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let proveedor of proveedores$ | async">
+          <td>{{proveedor.id}}</td>
+          <td>{{proveedor.correo}}</td>
+          <td>{{proveedor.direccion}}</td>
+          <td>{{proveedor.telefono}}</td>
+          <td>
+            <a class="btn btn-sm btn-editar mx-2" title="Editar proveedor" data-bs-toggle="modal"
+            data-bs-target="#ProveedorFormularioModal" (click)="abrirModal(proveedor)">
+              <i class="fas fa-edit"></i>
+            </a>
+            <a class="btn btn-sm btn-eliminar" title="Eliminar proveedor" (click)="eliminarProveedor(proveedor.id)">
+              <i class="fas fa-trash"></i>
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="modal fade" id="ProveedorFormularioModal" tabindex="-1" aria-labelledby="agregarProveedorModal"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border:2px solid #e0e0e0" >
+      <div class="modal-header tcard-title">
+        <button type="button" class="btn btn-sm btn-cancel" data-bs-dismiss="modal">Cancelar</button>
+        <span *ngIf="option==0">
+          <span class="modal-title text-center">Añadir Proveedor</span>
+        </span>
+        <span *ngIf="option==1">
+          <span class="modal-title text-center">Editar Proveedor</span>
+        </span>
+        <span *ngIf="option==0">
+          <button type="button" class="btn btn-crear btn-sm" (click)="agregarProveedor()">Crear</button>
+        </span>
+        <span *ngIf="option==1">
+          <button type="button" class="btn btn-editar btn-sm" (click)="editarProveedor()">Editar</button>
+        </span>
+      </div>
+      <div class="modal-body">
+        <div class="m-auto" style="width: 95%;">
+          <form [formGroup]="proveedorForm">
+            <div *ngIf="option==1">
+              <label>ID:</label>
+              <div class="input-group mb-3">
+                <span class="input-group-text">
+                  #
+                </span>
+                <input type="text" class="form-control" placeholder="ID" formControlName="id">
+              </div>
+            </div>
+            <label>Correo:</label>
+            <div class="input-group mb-3">
+              <span class="input-group-text">
+                <i class="fas fa-envelope"></i>
+              </span>
+              <input type="text" class="form-control" placeholder="Correo" formControlName="correo">
+            </div>
+            <label>Dirección:</label>
+            <div class="input-group mb-3">
+              <span class="input-group-text">
+                <i class="fas fa-map-marker-alt"></i>
+              </span>
+              <input type="text" class="form-control" placeholder="Dirección" formControlName="direccion">
+            </div>
+            <label>Teléfono:</label>
+            <div class="input-group mb-3">
+              <span class="input-group-text">
+                <i class="fas fa-phone"></i>
+              </span>
+              <input type="text" class="form-control" placeholder="Teléfono" formControlName="telefono">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <span class="text-center">{{errorHtml}}</span>
+      </div>
+    </div>
+  </div>
+</div>

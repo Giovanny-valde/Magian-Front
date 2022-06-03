@@ -1,0 +1,48 @@
+<div class="tcard">
+  <div class="tcard-title">
+    <div class="row align-items-center">
+      <div class="col-md-7 text-center">
+        <i class="me-2 fas fa-shapes"></i>
+        <span>Lista de facturas</span>
+      </div>
+      <div class="col-md-5 text-end">
+        <a class="btn btn-primary btn-sm">
+          <i class="fas fa-plus"></i>
+          Añadir factura
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="tcard-content">
+    <table class="table table-striped text-center" style="background-color: #f5f5f5;border: 1px solid #e0e0e0;">
+      <thead>
+        <th>ID</th>
+        <th>Inventario</th>
+        <th>Reserva</th>
+        <th>Persona - Inventario</th>
+        <th>Persona - Habitacion</th>
+        <th>Opciones</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let factura of facturas">
+          <td>{{factura.id}}</td>
+          <td><a class="fw-bold" style="cursor:pointer">{{factura.inventario.id}} - {{ factura.inventario.fecha }}</a></td>
+          <td><a class="fw-bold" style="cursor:pointer">{{factura.reserva.id}}</a></td>
+          <td><a class="fw-bold" style="cursor:pointer">{{factura.personainventario.id}}</a></td>
+          <td><a class="fw-bold" style="cursor:pointer">{{factura.personahabitacion.id}}</a></td>
+          <td>
+            <a class="btn btn-sm btn-success" title="Ver Datos ampliados">
+              <i class="fas fa-eye"></i>
+            </a>
+            <a class="btn btn-sm btn-warning mx-2" title="Editar factura">
+              <i class="fas fa-edit"></i>
+            </a>
+            <a class="btn btn-sm btn-danger" title="Eliminar factura">
+              <i class="fas fa-trash"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

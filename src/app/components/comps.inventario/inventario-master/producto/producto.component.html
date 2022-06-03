@@ -1,0 +1,178 @@
+<div class="tcard">
+  <div class="tcard-title">
+    <div class="row align-items-center">
+      <div class="col-md-7 text-center">
+        <i class="fa-solid fa-boxes-stacked"></i>
+        <span> Lista de Productos</span>
+      </div>
+      <div class="col-md-5 text-end">
+        <button type="button" class="btn btn-sm btn-crear" data-bs-toggle="modal"
+          data-bs-target="#ProductoFormularioModal" (click)="abrirModal(0)" >
+          <i class="fas fa-plus"></i>
+          Añadir Producto
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="tcard-content">
+    <table id="seTable" datatable [dtOptions]="dtOptions" class="table table-striped text-center" style="background-color: #f5f5f5;border: 1px solid #e0e0e0;">
+      <thead>
+        <tr>
+        <th>ID</th>
+        <th>Proveedor</th>
+        <th>Nombre</th>
+        <th>Marca</th>
+        <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let producto of productos$ | async">
+          <td>{{producto.id}}</td>
+          <td><a class="tlink" (click)="verProveedor(producto.idProveedor)">{{producto.idProveedor.id}} - {{producto.idProveedor.correo}}</a></td>
+          <td>{{producto.nombre}}</td>
+          <td>{{producto.marca}}</td>
+          <td>
+            <a class="btn btn-sm btn-ver" title="Ver proveedor" (click)="verProveedor(producto.idProveedor)">
+              <i class="fas fa-eye"></i>
+            </a>
+            <a class="btn btn-sm btn-editar mx-2" title="Editar proveedor" data-bs-toggle="modal"
+            data-bs-target="#ProductoFormularioModal" (click)="abrirModal(producto)">
+              <i class="fas fa-edit"></i>
+            </a>
+            <a class="btn btn-sm btn-eliminar" title="Eliminar producto" (click)="eliminarProducto(producto.id)">
+              <i class="fas fa-trash"></i>
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Alerta de ver proveedor -->
+
+<div class="t-alert hidden" id="t-alert">
+  <div class="t-alert-content" id="t-alert-content">
+    <div class="t-alert-content-title">
+      <button class="t-alert-btn-close btn btn-sm" (click)="closeAlert()">
+        <i class="fas fa-times-circle"></i>
+      </button>
+      <div class="t-alert-title">Proveedor {{proveedor.id}}</div>
+    </div>
+    <div class="t-alert-content-body">
+      <ul>
+        <li>
+          <strong>ID:</strong> {{proveedor.id}}
+        </li>
+        <li>
+          <strong>Correo:</strong> {{proveedor.correo}}
+        </li>
+        <li>
+          <strong>Dirección:</strong> {{proveedor.direccion}}
+        </li>
+        <li>
+          <strong>Telefono:</strong> {{proveedor.telefono}}
+        </li>
+      </ul>
+      <button class="mb-2 btn btn-ver btn-sm" data-bs-toggle="modal"
+      data-bs-target="#ProductoFormularioModal" (click)="productosProveedor(proveedor)" >Ver productos de este proveedor</button>
+    </div>
+  </div>
+</div>
+
+<!-- Formulario de producto o tabla de productos de proveedor -->
+
+<div class="modal fade" id="ProductoFormularioModal" tabindex="-1" aria-labelledby="ProductoFormularioModal"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="z-index:10">
+    <div class="modal-content" style="border:2px solid #e0e0e0" >
+      <div class="modal-header tcard-title">
+          <button type="button" class="btn btn-sm btn-cancel" data-bs-dismiss="modal">Cerrar</button>
+          <div *ngIf="tipoModal=='editar'">
+            <span class="text-center">Editar producto</span>
+          </div>
+          <div *ngIf="tipoModal=='ver'">
+            <span class="text-center">Productos de proveedor {{proveedor.id}}</span>
+          </div>
+          <div *ngIf="tipoModal=='agregar'">
+            <span class="text-center">Añadir producto</span>
+          </div>
+          <span *ngIf="tipoModal=='agregar'">
+            <button type="button" class="btn btn-crear btn-sm" (click)="agregarProducto()">Crear</button>
+          </span>
+          <span *ngIf="tipoModal=='editar'">
+            <button type="button" class="btn btn-editar btn-sm" (click)="editarProducto()">Editar</button>
+          </span>
+      </div>
+      <div class="modal-body">
+        <div class="m-auto" style="width: 95%;">
+          <div *ngIf="tipoModal=='ver'">
+            <table class="table table-striped text-center" style="background-color: #f5f5f5;border: 1px solid #e0e0e0;">
+              <thead>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Marca</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let producto of productosPorProveedor">
+                  <td>{{producto.id}}</td>
+                  <td>{{producto.nombre}}</td>
+                  <td>{{producto.marca}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div *ngIf="tipoModal=='editar' || tipoModal=='agregar'">
+            <form [formGroup]="productoForm">
+              <div *ngIf="tipoModal=='editar'">
+                <label>ID:</label>
+                <div class="input-group mb-3">
+                  <span class="input-group-text">
+                    #
+                  </span>
+                  <input type="text" class="form-control" placeholder="ID" formControlName="id">
+                </div>
+              </div>
+              <label>Nombre:</label>
+              <div class="input-group mb-3">
+                <span class="input-group-text">
+                  <i class="fa-solid fa-tag"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+              </div>
+              <label>Marca:</label>
+              <div class="input-group mb-3">
+                <span class="input-group-text">
+                  <i class="fa-solid fa-building"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Marca" formControlName="marca">
+              </div>
+              <label>Proveedor:</label>
+              <div class="input-group mb-3">
+                <span class="input-group-text">
+                  <i class="fa-solid fa-box-archive"></i>
+                </span>
+                <select class="form-select" formControlName="proveedor_id">
+                  <option value="">Seleccione un proveedor</option>
+                  <option *ngFor="let proveedor of proveedores$ | async" [value]="proveedor.id">
+                    {{proveedor.id}} - {{proveedor.correo}}
+                  </option>
+                </select>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="tipoModal=='agregar' || tipoModal=='editar'" class="modal-footer">
+        <span class="text-center">{{errorHtml}}</span>
+      </div>
+    </div>
+  </div>
+</div>

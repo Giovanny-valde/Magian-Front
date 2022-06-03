@@ -1,28 +1,32 @@
-import { Injectable } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { proveedor } from '../../models/proveedor/proveedor';
+import { Proveedor } from '../../models/proveedor/proveedor';
 import { SharedService } from 'src/app/shared.service';
+import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+}
+)
 export class ProveedorService {
 
-    private path = this.sharedService.APIUrl + '/proveedor';
-    
+    private path = `${this.sharedService.APIUrl}/proveedor`;
+
     constructor(private http: HttpClient, private sharedService: SharedService) { }
 
-    public listarTodos() {
-        return this.http.get<proveedor[]>(this.path);
+    public listarTodos():Observable<Proveedor[]> {
+        return this.http.get<Proveedor[]>(this.path);
     }
 
     public listarPorId(id: number) {
-        return this.http.get<proveedor>(this.path + '/' + id);
+        return this.http.get<Proveedor>(this.path+"/"+id);
     }
 
-    public agregar(proveedor: proveedor) {
+    public agregar(proveedor: Proveedor) {
         return this.http.post<void>(this.path, proveedor);
     }
 
-    public actualizar(proveedor: proveedor) {
+    public actualizar(proveedor: Proveedor) {
         return this.http.put<void>(this.path + '/' + proveedor.id, proveedor);
     }
 

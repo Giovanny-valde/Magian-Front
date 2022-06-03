@@ -1,0 +1,18 @@
+.tcard{
+    width:98%;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+.tcard-title{
+    font-weight: bold;
+    padding: 10px;
+    background-color: #f5f5f5;
+}
+.tcard-content{
+    padding: 10px;
+}
+.btn-message:hover{
+    background-color: #f5f5f5;
+    content:"ssss";
+}

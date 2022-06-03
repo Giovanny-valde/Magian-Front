@@ -1,0 +1,150 @@
+<div class="tcard">
+  <div class="tcard-title">
+    <div class="row align-items-center">
+      <div class="col-md-7 text-center">
+        <i class="mx-3 fa-solid fa-people-carry-box"></i>
+        <span> Lista de productos entrados</span>
+      </div>
+      <div class="col-md-5 text-end">
+        <button type="button" class="btn btn-sm btn-crear" data-bs-toggle="modal"
+          data-bs-target="#ProductoFormularioModal">
+          <i class="fas fa-plus"></i>
+          Añadir producto a inventario
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="tcard-content">
+    <table class="table table-striped text-center" style="background-color: #f5f5f5;border: 1px solid #e0e0e0;">
+      <thead>
+        <th>ID</th>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th>Fecha de entrada</th>
+        <th>Opciones</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let producto of inventarios">
+          <td>{{producto.id}}</td>
+          <td><a class="tlink">{{producto.producto.nombre}} ({{producto.producto.marca}})</a></td>
+          <td>{{producto.cantidad}}</td>
+          <td>{{producto.precio}}</td>
+          <td>{{producto.fecha}}</td>
+          <td>
+            <a class="btn btn-sm me-2 btn-ver" title="Añadir más productos" data-bs-toggle="modal"
+              data-bs-target="#agregarProductoModal">
+              <i class="fas fa-plus"></i>
+            </a>
+            <a class="btn btn-sm btn-ver" title="Ver proveedor">
+              <i class="fas fa-eye"></i>
+            </a>
+            <a class="btn btn-sm btn-editar mx-2" title="Editar proveedor" data-bs-toggle="modal"
+              data-bs-target="#ProductoFormularioModal">
+              <i class="fas fa-edit"></i>
+            </a>
+            <a class="btn btn-sm btn-eliminar" title="Eliminar producto">
+              <i class="fas fa-trash"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="agregarProductoModal">
+  <div class="modal-dialog modal-md modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="col-2">
+          <button
+            type="button"
+            class="btn-sm btn btn-cancel"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >Cancelar</button>
+        </div>
+         <div class="col-8">
+            <h5 class="modal-title text-center">Agregar producto a inventario</h5>
+         </div>
+         <div class="col-2 text-end">
+          <button
+            type="button"
+            class="btn-sm btn btn-crear"
+          >Aceptar</button>
+         </div>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <span class="fw-bold">Producto 1 (Marca 1)</span>
+            <div class="mt-3">
+              <div class="mb-3">
+                <label>Cantidad de productos a aumentar: </label>
+                <input class="form-control" type="text" >
+              </div>
+              <div class="mb-3">
+                <label>Precio de nuevos productos</label>
+                <input class="form-control" type="number" >
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="ProductoFormularioModal">
+  <div class="modal-dialog modal-md modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="col-2">
+          <button
+            type="button"
+            class="btn-sm btn btn-cancel"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >Cancelar</button>
+        </div>
+         <div class="col-8">
+            <h5 class="modal-title text-center">Agregar producto de entrada</h5>
+         </div>
+         <div class="col-2 text-end">
+          <button
+            type="button"
+            class="btn-sm btn btn-crear"
+          >Aceptar</button>
+         </div>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="producto">Producto</label>
+            <select class="form-control" id="producto" name="producto">
+              <option value="">Seleccione un producto</option>
+              <option value="1">Producto 1</option>
+              <option value="2">Producto 2</option>
+              <option value="3">Producto 3</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cantidad">Cantidad</label>
+            <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad">
+          </div>
+          <div class="form-group">
+            <label for="precio">Precio</label>
+            <input type="number" class="form-control" id="precio" name="precio" placeholder="Precio">
+          </div>
+          <div class="form-group">
+            <label for="fecha">Fecha de entrada</label>
+            <input type="date" class="form-control" id="fecha" name="fecha" placeholder="Fecha de entrada">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
